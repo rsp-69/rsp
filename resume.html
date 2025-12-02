@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohan Prabhu - Resume</title>
-    <!-- Load Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -30,11 +29,20 @@
           overflow: hidden;
       }
 
-      /* --- COLOR DEFINITIONS --- */
+      /* --- COLOR DEFINITIONS (Using Variables) --- */
+      /* These default values ensure the resume looks good before JS loads */
+      :root {
+          --color-primary: #1B1B1B;       /* Default: Night Trunk Header */
+          --color-accent: #1F6F50;        /* Default: Pine Core */
+          --color-link: #FFB000;          /* Default: Citrus Peel */
+          --color-highlight-bg: #F4EAD5;  /* Default: Linen Pulp */
+      }
+
       .header {
-       background-color: Header ;
+        background-color: var(--color-primary); /* FIXED */
         color: white; 
-        padding: 24px 24px;}
+        padding: 24px 24px;
+      }
 
       .section-title { 
         font-size: 1.25rem; 
@@ -42,25 +50,28 @@
         letter-spacing: 0.05em; 
         font-weight: 700; 
         color: #333;
-        border-bottom: 2px solid section ;
+        border-bottom: 2px solid var(--color-accent); /* FIXED */
         padding-bottom: 4px;
         margin-bottom: 1rem;
       }
       
-      .date-link-text
-{ 
-        color: Link ;/* Link Color 3 */
+      .date-link-text { 
+        color: var(--color-link); /* FIXED */
         font-weight: 600;
- }
+      }
+
       .highlight-bg {
-        background-color: Highlight;
+        background-color: var(--color-highlight-bg); /* FIXED */
       }
       
       /* --- CRITICAL PRINTING FIX --- */
       @media print {
-        body { 
-          background-color: white; padding: 0; }
+        body { background-color: white; padding: 0; }
         .resume-container { box-shadow: none; border-radius: 0; max-width: 100%; width: 100%; }        
+        
+        /* Hide the palette selector when printing */
+        .no-print { display: none !important; }
+
         /* This rule forces the PDF generator to include all background colors and images */
         .resume-container * {
             -webkit-print-color-adjust: exact !important;
@@ -74,20 +85,20 @@
 </head>
 <body>
 
+<div id="palette-selector" class="no-print flex flex-wrap justify-center p-4 gap-2 bg-gray-200 mb-4"></div>
+
 <div class="resume-container">
-    <!-- HEADER SECTION: Uses .header class defined in style block -->
     <div class="header shadow-lg">
-        <h1 class="text-3xl font-bold uppercase tracking-wider mb-1" style="color:section ;">ROHAN PRABHU</h1>
-        <h2 class="text-sm" style="color:Link ;font-weight: bold;">National Supply Chain Analyst</h2>
+        <h1 class="text-3xl font-bold uppercase tracking-wider mb-1" style="color: var(--color-accent);">ROHAN PRABHU</h1>
+        <h2 class="text-sm" style="color: var(--color-link); font-weight: bold;">National Supply Chain Analyst</h2>
         <div class="flex flex-wrap text-xs mt-3 space-x-4">
-<span>MELBOURNE</span>
+            <span>MELBOURNE</span>
             <span>P: 0415 068 437</span>
             <span>E: ROHAN.PRABHU24@GMAIL.COM</span>
         </div>
     </div>
 
     <div class="p-6">
-        <!-- PROFILE SECTION -->
         <div class="section mb-6">
             <h3 class="section-title">Professional Profile</h3>
             <p class="text-sm text-gray-700">
@@ -95,11 +106,9 @@
             </p>
         </div>
 
-        <!-- TECHNICAL SKILLS SECTION -->
         <div class="section mb-6">
             <h3 class="section-title">Technical Skills</h3>
             <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
-                <!-- Column 1: Programming & Tools -->
                 <div>
                     <strong class="text-gray-900 block mb-1">PROGRAMMING & TOOLS:</strong>
                     <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
@@ -109,7 +118,6 @@
                         <li class="list-item">iOS Shortcuts Scripting & YAML</li>
                     </ul>
                 </div>
-                <!-- Column 2: Data Analysis & Strategy -->
                 <div>
                     <strong class="text-gray-900 block mb-1">DATA ANALYSIS & STRATEGY:</strong>
                     <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4">
@@ -129,33 +137,30 @@
             </div>
         </div>
 
-        <!-- KEY PROJECT SECTION: Uses .highlight-bg class -->
         <div class="section mb-6">
             <h3 class="section-title">Key Technical Project: Home Ecosystem Automation</h3>
             <div class="p-4 rounded-lg border border-gray-100 highlight-bg">
-                <p class="font-bold text-sm mb-1 text-800"><span style="color:Link ;">Independent Record // 2025</span></p>
+                <p class="font-bold text-sm mb-1 text-800"><span style="color: var(--color-link);">Independent Record // 2025</span></p>
                 <ul class="list-disc list-inside text-sm text-gray-700 ml-4 space-y-1"><span style="color:slategray;">
                     <li class="list-item">
-                        <span style="color:section ;font-weight: bold;">The Challenge:</span> Identified an interoperability gap between Apple iOS and Google Home hardware, preventing seamless media control.
+                        <span style="color: var(--color-accent); font-weight: bold;">The Challenge:</span> Identified an interoperability gap between Apple iOS and Google Home hardware, preventing seamless media control.
                     </li>
                     <li class="list-item">
-                        <span style="color:section ;font-weight: bold;">The Solution:</span> Self-taught JSON syntax and RESTful API protocols to engineer a custom bridge between Spotify's Web API and iOS Shortcuts.
+                        <span style="color: var(--color-accent); font-weight: bold;">The Solution:</span> Self-taught JSON syntax and RESTful API protocols to engineer a custom bridge between Spotify's Web API and iOS Shortcuts.
                     </li>
                     <li class="list-item">
-                        <span style="color:section ;font-weight: bold;">Key Achievement:</span> Went from zero knowledge to a fully deployed, custom Shortcut that allows voice control of Spotify casting to any speaker, solving a complex hardware and software puzzle.</span>
+                        <span style="color: var(--color-accent); font-weight: bold;">Key Achievement:</span> Went from zero knowledge to a fully deployed, custom Shortcut that allows voice control of Spotify casting to any speaker, solving a complex hardware and software puzzle.
                     </li>
-                </ul>
+                </span></ul>
             </div>
         </div>
 
-        <!-- EXPERIENCE SECTION -->
         <div class="section mb-6">
             <h3 class="section-title">Professional Experience</h3>
 
             <div class="mb-4">
                 <p class="text-base font-semibold text-gray-800">Senior Data Analyst</p>
                 <p class="text-sm text-gray-600 mb-1">Major FMCG Distributor, Melbourne</p>
-                <!-- Date/Link Text color is applied here -->
                 <p class="text-xs date-link-text">2018 – Present</p>
                 <ul class="list-disc list-inside text-sm text-gray-700 ml-4 mt-1 space-y-1">
                     <li class="list-item">
@@ -185,26 +190,24 @@
             </div>
         </div>
 
-        <!-- CORE ACHIEVEMENTS SECTION: Uses .highlight-bg class -->
         <div class="section mb-6">
             <h3 class="section-title">Core Operational Achievements</h3>
             <div class="p-4 rounded-lg border border-gray-100 highlight-bg">
                 <ul class="list-disc list-inside text-sm ml-4 space-y-1"><span style="color:slategray;">
                     <li class="list-item">
-                        <b>Inventory Optimization</b>: Constructed an "Inventory Investigator" tool that reduced excess stock liability by <span style="color:section ;font-weight: bold;">75% nationally</span>.
+                        <b>Inventory Optimization</b>: Constructed an "Inventory Investigator" tool that reduced excess stock liability by <span style="color: var(--color-accent); font-weight: bold;">75% nationally</span>.
                     </li>
                     <li class="list-item">
-                        <b>Productivity Boost</b>: Centralized product lifecycle management, improving team productivity by <span style="color:section ;font-weight: bold;">80%</span>.
+                        <b>Productivity Boost</b>: Centralized product lifecycle management, improving team productivity by <span style="color: var(--color-accent); font-weight: bold;">80%</span>.
                     </li>
                     <li class="list-item">
-                        <b>Service Level Excellence</b>: Maintained Service Levels <span style="color:section ;font-weight: bold;">above 97-98%</span> consistently.
+                        <b>Service Level Excellence</b>: Maintained Service Levels <span style="color: var(--color-accent); font-weight: bold;">above 97-98%</span> consistently.
                     </li>
-                </ul>
+                </span></ul>
             </div>
         </div>
 
 
-        <!-- EDUCATION -->
         <div class="section mb-6">
             <h3 class="section-title">Education</h3>
             <div class="mb-3">
@@ -217,7 +220,6 @@
             </div>
         </div>
         
-        <!-- INTERESTS -->
         <div class="section">
             <h3 class="section-title">Interests</h3>
             <p class="text-sm text-gray-700">
@@ -229,6 +231,8 @@
 
     </div>
 </div>
+
+<script src="interface.js"></script>
 
 </body>
 </html>
