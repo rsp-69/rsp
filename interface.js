@@ -1,5 +1,5 @@
 // --- Configuration ---
-const PALETTES_FILE = 'pallets.json';
+const PALETTES_FILE = 'palettes.json';
 const BUTTONS_CONTAINER_ID = 'palette-selector';
 
 /**
