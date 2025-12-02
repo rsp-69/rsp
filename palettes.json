@@ -1,0 +1,242 @@
+{
+  "Night Trunk": {
+    "id": 1,
+    "mood": "Corporate, Technical",
+    "colors": {
+      "headerBg": { "name": "Night Trunk", "hex": "#1B1B1B" },
+      "sectionAccent": { "name": "Pine Core", "hex": "#1F6F50" },
+      "dateLinkText": { "name": "Citrus Peel", "hex": "#FFB000" },
+      "highlightBg": { "name": "Linen Pulp", "hex": "#F4EAD5" }
+    }
+  },
+  "Vaporwave Dream": {
+    "id": 2,
+    "mood": "Playful, Retro-Pop",
+    "colors": {
+      "headerBg": { "name": "Purple Haze", "hex": "#bc84ee" },
+      "sectionAccent": { "name": "Lime Pop", "hex": "#dcfd8b" },
+      "dateLinkText": { "name": "Orange Crush", "hex": "#ff823a" },
+      "highlightBg": { "name": "Peach Fuzz", "hex": "#FDD5BD" }
+    }
+  },
+  "Obsidian Edge": {
+    "id": 3,
+    "mood": "Modern, Dark Mode",
+    "colors": {
+      "headerBg": { "name": "Obsidian", "hex": "#0D0D0D" },
+      "sectionAccent": { "name": "Electric Blue", "hex": "#00BFFF" },
+      "dateLinkText": { "name": "Silver", "hex": "#BDBDBD" },
+      "highlightBg": { "name": "Dark Gray", "hex": "#2C2C2C" }
+    }
+  },
+  "Ocean Teal": {
+    "id": 4,
+    "mood": "Calm, Professional",
+    "colors": {
+      "headerBg": { "name": "Teal", "hex": "#008080" },
+      "sectionAccent": { "name": "Pink", "hex": "#FFC0CB" },
+      "dateLinkText": { "name": "Dark Slate Blue", "hex": "#483D8B" },
+      "highlightBg": { "name": "AliceBlue", "hex": "#F0F8FF" }
+    }
+  },
+  "Crimson Tide": {
+    "id": 5,
+    "mood": "Bold, Academic",
+    "colors": {
+      "headerBg": { "name": "Crimson", "hex": "#DC143C" },
+      "sectionAccent": { "name": "Black", "hex": "#000000" },
+      "dateLinkText": { "name": "Indigo", "hex": "#4B0082" },
+      "highlightBg": { "name": "Off-White", "hex": "#F0F0F0" }
+    }
+  },
+  "Forest Green": {
+    "id": 6,
+    "mood": "Natural, Sustainable",
+    "colors": {
+      "headerBg": { "name": "Forest Green", "hex": "#228B22" },
+      "sectionAccent": { "name": "Gold", "hex": "#FFD700" },
+      "dateLinkText": { "name": "Saddle Brown", "hex": "#8B4513" },
+      "highlightBg": { "name": "Beige", "hex": "#F5F5DC" }
+    }
+  },
+  "Sunrise Gold": {
+    "id": 7,
+    "mood": "Warm, Energetic",
+    "colors": {
+      "headerBg": { "name": "Midnight Blue", "hex": "#191970" },
+      "sectionAccent": { "name": "Gold", "hex": "#FFD700" },
+      "dateLinkText": { "name": "OrangeRed", "hex": "#FF4500" },
+      "highlightBg": { "name": "Old Lace", "hex": "#FDF5E6" }
+    }
+  },
+  "Lavender Haze": {
+    "id": 8,
+    "mood": "Soft, Minimal",
+    "colors": {
+      "headerBg": { "name": "Dark Slate Blue", "hex": "#483D8B" },
+      "sectionAccent": { "name": "Lavender", "hex": "#E6E6FA" },
+      "dateLinkText": { "name": "Thistle", "hex": "#D8BFD8" },
+      "highlightBg": { "name": "Linen Pulp", "hex": "#F4EAD5" }
+    }
+  },
+  "Electric Violet": {
+    "id": 9,
+    "mood": "High-Tech, Vibrant",
+    "colors": {
+      "headerBg": { "name": "Charcoal", "hex": "#36454F" },
+      "sectionAccent": { "name": "Aqua", "hex": "#00FFFF" },
+      "dateLinkText": { "name": "Blue Violet", "hex": "#8A2BE2" },
+      "highlightBg": { "name": "AliceBlue", "hex": "#F0F8FF" }
+    }
+  },
+  "Desert Sand": {
+    "id": 10,
+    "mood": "Earthy, Minimal",
+    "colors": {
+      "headerBg": { "name": "Camel", "hex": "#C2B280" },
+      "sectionAccent": { "name": "Dark Gray", "hex": "#A9A9A9" },
+      "dateLinkText": { "name": "Saddle Brown", "hex": "#8B4513" },
+      "highlightBg": { "name": "Wheat", "hex": "#F5DEB3" }
+    }
+  },
+  "Skyline Blue": {
+    "id": 11,
+    "mood": "Finance, Trustworthy",
+    "colors": {
+      "headerBg": { "name": "Dark Slate Gray", "hex": "#2F4F4F" },
+      "sectionAccent": { "name": "Steel Blue", "hex": "#4682B4" },
+      "dateLinkText": { "name": "Gold", "hex": "#FFD700" },
+      "highlightBg": { "name": "Alice Blue", "hex": "#F0F8FF" }
+    }
+  },
+  "Neon Grid": {
+    "id": 12,
+    "mood": "Gamer, Abstract",
+    "colors": {
+      "headerBg": { "name": "Black", "hex": "#000000" },
+      "sectionAccent": { "name": "Neon Green", "hex": "#39FF14" },
+      "dateLinkText": { "name": "Deep Pink", "hex": "#FF1493" },
+      "highlightBg": { "name": "Dim Gray", "hex": "#333333" }
+    }
+  },
+  "Neo-Pop": {
+    "id": 13,
+    "mood": "Digital, High Energy",
+    "colors": {
+      "headerBg": { "name": "Lavender Purple", "hex": "#9B5DE5" },
+      "sectionAccent": { "name": "Banana Cream", "hex": "#FEE440" },
+      "dateLinkText": { "name": "Deep Pink", "hex": "#F15BB5" },
+      "highlightBg": { "name": "Alice Blue", "hex": "#F0F8FF" }
+    }
+  },
+  "Tropical Fusion": {
+    "id": 14,
+    "mood": "Vibrant, Fresh",
+    "colors": {
+      "headerBg": { "name": "Cerulean", "hex": "#247BA0" },
+      "sectionAccent": { "name": "Hot Fuchsia", "hex": "#FF1654" },
+      "dateLinkText": { "name": "Tropical Teal", "hex": "#70C1B3" },
+      "highlightBg": { "name": "Light Cyan", "hex": "#E0FFFF" }
+    }
+  },
+  "Jewel Tone": {
+    "id": 15,
+    "mood": "Rich, Bold",
+    "colors": {
+      "headerBg": { "name": "Indigo", "hex": "#541388" },
+      "sectionAccent": { "name": "Gold", "hex": "#FFD400" },
+      "dateLinkText": { "name": "Berry Lipstick", "hex": "#D90368" },
+      "highlightBg": { "name": "White Smoke", "hex": "#F5F5F5" }
+    }
+  },
+  "Muted Sunset": {
+    "id": 16,
+    "mood": "Warm, Vintage",
+    "colors": {
+      "headerBg": { "name": "Linen", "hex": "#F6BD60" },
+      "sectionAccent": { "name": "Light Coral", "hex": "#F28482" },
+      "dateLinkText": { "name": "Muted Teal", "hex": "#84A59D" },
+      "highlightBg": { "name": "Ghost White", "hex": "#F8F8FF" }
+    }
+  },
+  "Urban Safety": {
+    "id": 17,
+    "mood": "Industrial, Bold",
+    "colors": {
+      "headerBg": { "name": "Graphite 900", "hex": "#23262C" },
+      "sectionAccent": { "name": "Safety Orange", "hex": "#FE7733" },
+      "dateLinkText": { "name": "Neon Sprout", "hex": "#B1FA63" },
+      "highlightBg": { "name": "Off-White", "hex": "#F8F8F8" }
+    }
+  },
+  "Cyber Punk": {
+    "id": 18,
+    "mood": "Futuristic, Electric",
+    "colors": {
+      "headerBg": { "name": "Indigo Bloom", "hex": "#7209B7" },
+      "sectionAccent": { "name": "Sky Aqua", "hex": "#4CC9F0" },
+      "dateLinkText": { "name": "Neon Pink", "hex": "#F72585" },
+      "highlightBg": { "name": "Very Dark Gray", "hex": "#1C1C1C" }
+    }
+  },
+  "Dusty Berry": {
+    "id": 19,
+    "mood": "Subtle, Modern",
+    "colors": {
+      "headerBg": { "name": "Dusty Grape", "hex": "#52489C" },
+      "sectionAccent": { "name": "Smart Blue", "hex": "#4062BB" },
+      "dateLinkText": { "name": "Bubblegum Pink", "hex": "#F45B69" },
+      "highlightBg": { "name": "Platinum", "hex": "#EBEBEB" }
+    }
+  },
+  "Deep Marine": {
+    "id": 20,
+    "mood": "Classic, Deep",
+    "colors": {
+      "headerBg": { "name": "Alice Blue Dark", "hex": "#0A2463" },
+      "sectionAccent": { "name": "Periwinkle Pink", "hex": "#DB315B" },
+      "dateLinkText": { "name": "Lavender Blue", "hex": "#3E92CC" },
+      "highlightBg": { "name": "Alice Blue", "hex": "#F0F8FF" }
+    }
+  },
+  "Seaside Pop": {
+    "id": 21,
+    "mood": "Aqua & Pink",
+    "colors": {
+      "headerBg": { "name": "Dark Teal", "hex": "#1A5B51" },
+      "sectionAccent": { "name": "Neon Chartreuse", "hex": "#E0F598" },
+      "dateLinkText": { "name": "Light Slate Blue", "hex": "#8BBCA" },
+      "highlightBg": { "name": "Off-White", "hex": "#F8F8F8" }
+    }
+  },
+  "New Forest": {
+    "id": 22,
+    "mood": "Simple, Natural",
+    "colors": {
+      "headerBg": { "name": "Forest Mint", "hex": "#2EBB57" },
+      "sectionAccent": { "name": "Saffron Dust", "hex": "#F4C430" },
+      "dateLinkText": { "name": "Pine Core", "hex": "#1F6F50" },
+      "highlightBg": { "name": "Linen Pulp", "hex": "#F4EAD5" }
+    }
+  },
+  "Graphite Zink": {
+    "id": 23,
+    "mood": "Neutral, High-Viz",
+    "colors": {
+      "headerBg": { "name": "Graphite 700", "hex": "#3A3F47" },
+      "sectionAccent": { "name": "Safety Orange", "hex": "#FE7733" },
+      "dateLinkText": { "name": "Cloud Zink", "hex": "#D1D5D8" },
+      "highlightBg": { "name": "Off-White", "hex": "#F8F8F8" }
+    }
+  },
+  "Muted Pastel": {
+    "id": 24,
+    "mood": "Soft, Light",
+    "colors": {
+      "headerBg": { "name": "Muted Teal", "hex": "#84A59D" },
+      "sectionAccent": { "name": "Cotton Rose", "hex": "#F5CAC3" },
+      "dateLinkText": { "name": "Light Coral", "hex": "#F28482" },
+      "highlightBg": { "name": "Linen Light", "hex": "#F7EDE2" }
+    }
+  }
+}
