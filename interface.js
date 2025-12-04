@@ -1,12 +1,12 @@
 // --- Configuration ---
-const PALETTES_FILE = 'pallets.json';
+const PALETTES_FILE = 'pallettes.json';
 const BUTTONS_CONTAINER_ID = 'palette-selector';
 
 /**
- * Maps the nested JSON structure from pallets.json to the flat structure
+ * Maps the nested JSON structure from pallettes.json to the flat structure
  * required by the CSS variables in resume.html.
  *
- * @param {object} rawData - The raw top-level object from pallets.json.
+ * @param {object} rawData - The raw top-level object from pallettes.json.
  * @returns {Array<object>} A flattened array of palettes with standard keys.
  */
 function processPalettes(rawData) {
@@ -120,7 +120,7 @@ async function initializeInterface() {
         const palettes = processPalettes(rawPalettes);
 
         if (palettes.length === 0) {
-            throw new Error("No valid color palettes found after processing. Check your pallets.json structure.");
+            throw new Error("No valid color palettes found after processing. Check your pallettes.json structure.");
         }
 
         createPaletteButtons(palettes);
