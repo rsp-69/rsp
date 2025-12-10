@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter - Themed Template</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <!-- NEW: Loading Montserrat font for all themes except JB Hi-Fi -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+
+    <style>
+        /*
+         * --- THEME DEFINITIONS ---
+         */
+
+        /* Base utility classes for consistent styling */
+        .name-divider-2px { height: 2px; } 
+        .highlights-lines-bg { background-color: var(--color-highlights-lines); } 
+        .highlights-lines-text { color: var(--color-highlights-lines); } 
+        .accent-1-text { color: var(--color-accent-1); }
+        .highlights-lines-border { border-color: var(--color-highlights-lines); }
+        
+        .manifesto-quote {
+            font-weight: 700;
+            font-style: italic;
+            color: var(--color-highlights-lines); 
+        }
+
+        /* The name font is now dynamically set via --name-font CSS variable in JavaScript */
+        .rock-salt-name {
+            font-family: var(--name-font, 'Montserrat'), sans-serif; 
+            line-height: 1.2; 
+        }
+        
+        .main-content-card {
+            border: 6px solid var(--color-accent-2) !important; 
+            box-shadow: none !important; 
+            background-color: var(--color-pg-bg) !important;
+        }
+
+        /* * --- OUTER BACKGROUND CHANGE APPLIED HERE:
+         * All themes now use background-color: var(--color-accent-1) !important;
+         */
+
+
+        /* --- 1. JB HI-FI (ORIGINAL) --- */
+        .theme-jb-hifi {
+            --color-primary-text: #1A1A1A; 
+            --color-highlights-lines: #FFF100; 
+            --color-accent-1: #FF0000; /* Name/Outer BG Color */
+            --color-pg-bg: #fafafa;
+            --color-accent-2: #00AEEF; 
+            
+            background-color: var(--color-accent-1) !important; /* RED */
+            color: white; /* Contact details outside card are white */
+        }
+
+        /* --- 2. PROFESSIONAL --- */
+        .theme-professional {
+            --color-primary-text: #0B2447; 
+            --color-highlights-lines: #007FFF; 
+            --color-accent-1: #3E8E7E; /* Name/Outer BG Color */
+            --color-pg-bg: #F5F7F8; 
+            --color-accent-2: #0B2447; 
+            
+            background-color: var(--color-accent-1) !important; /* Muted Teal */
+            color: white; /* Contact details outside card are white */
+        }
+
+        /* --- 3. EARTH TONES --- */
+        .theme-earth-tones {
+            --color-primary-text: #2A3A2A; 
+            --color-highlights-lines: #B7A667; 
+            --color-accent-1: #A0522D; /* Name/Outer BG Color */
+            --color-pg-bg: #F0EAD6; 
+            --color-accent-2: #2A3A2A; 
+            
+            background-color: var(--color-accent-1) !important; /* Sienna Brown */
+            color: white; 
+        }
+
+        /* --- 4. MONOCHROME --- */
+        .theme-monochrome {
+            --color-primary-text: #222222; 
+            --color-highlights-lines: #666666; 
+            --color-accent-1: #000000; /* Name/Outer BG Color */
+            --color-pg-bg: #FFFFFF; 
+            --color-accent-2: #000000; 
+            
+            background-color: var(--color-accent-1) !important; /* Black */
+            color: white; 
+        }
+
+        /* --- 5. KMART (UPDATED) --- */
+        .theme-kmart {
+            --color-primary-text: #333333; 
+            --color-highlights-lines: #006A73; 
+            --color-accent-1: #E81F3D; /* Name/Outer BG Color */
+            --color-pg-bg: #F5F5F5; 
+            --color-accent-2: #FFDD00; 
+            
+            background-color: var(--color-accent-1) !important; /* Kmart Red */
+            color: white; 
+        }
+
+        /* --- 6. ADIDAS (DEEPER GOLD) --- */
+        .theme-adidas {
+            --color-primary-text: #000000; 
+            --color-highlights-lines: #B8860B; 
+            --color-accent-1: #0051BA; /* Name/Outer BG Color */
+            --color-pg-bg: #F5F5F5; 
+            --color-accent-2: #000000; 
+            
+            background-color: var(--color-accent-1) !important; /* Adidas Blue */
+            color: white; 
+        }
+
+        /* --- 7. COLES GROUP --- */
+        .theme-coles {
+            --color-primary-text: #2B2A2A; 
+            --color-highlights-lines: #008000; 
+            --color-accent-1: #CC1719; /* Name/Outer BG Color */
+            --color-pg-bg: #F2F2F2; 
+            --color-accent-2: #CC1719; 
+            
+            background-color: var(--color-accent-1) !important; /* Coles Red */
+            color: white; 
+        }
+        
+        /* --- 8. BEGA GROUP --- */
+        .theme-bega {
+            --color-primary-text: #333333; 
+            --color-highlights-lines: #006847; 
+            --color-accent-1: #FFCC00; /* Name/Outer BG Color */
+            --color-pg-bg: #FFFFFF; 
+            --color-accent-2: #5BC0DE; 
+            
+            background-color: var(--color-accent-1) !important; /* Gold Yellow */
+            color: #333333; /* Dark text for contrast against light yellow */
+        }
+
+        /* --- 9. OFFICEWORKS --- */
+        .theme-officeworks {
+            --color-primary-text: #333333; 
+            --color-highlights-lines: #0066A1; 
+            --color-accent-1: #F29C35; /* Name/Outer BG Color */
+            --color-pg-bg: #FFFFFF; 
+            --color-accent-2: #00A651; 
+            
+            background-color: var(--color-accent-1) !important; /* Officeworks Orange */
+            color: #333333; /* Dark text for contrast against light orange */
+        }
+
+        /* --- 10. THE REJECT SHOP --- */
+        .theme-reject-shop {
+            --color-primary-text: #333333; 
+            --color-highlights-lines: #99004C; 
+            --color-accent-1: #FFFFFF; /* Name/Outer BG Color - Use a high contrast color instead of white for the background */
+            --color-pg-bg: #F2F2F2; 
+            --color-accent-2: #FFCC00; 
+            
+            /* For the Reject Shop, we will use the Yellow accent color as the background 
+               because the intended accent-1 color is white (#FFFFFF) which clashes with the text and is too bright */
+            background-color: var(--color-accent-2) !important; /* Yellow */
+            color: #333333; /* Dark text for contrast against yellow */
+        }
+
+        /* --- 11. ASAHI BEVERAGES --- */
+        .theme-asahi {
+            --color-primary-text: #1D1D1B; 
+            --color-highlights-lines: #0070BA; 
+            --color-accent-1: #E31837; /* Name/Outer BG Color */
+            --color-pg-bg: #F5F5F5; 
+            --color-accent-2: #FFC423; 
+            
+            background-color: var(--color-accent-1) !important; /* Red */
+            color: white; 
+        }
+
+        /* --- 12. BUNNINGS --- */
+        .theme-bunnings {
+            --color-primary-text: #333333; 
+            --color-highlights-lines: #FF0000; 
+            --color-accent-1: #009900; /* Name/Outer BG Color - Using Green for a clean look */
+            --color-pg-bg: #F5F5F5; 
+            --color-accent-2: #FF0000; 
+            
+            background-color: var(--color-accent-1) !important; /* Green */
+            color: white; 
+        }
+        
+        /* --- 13. NIKE --- */
+        .theme-nike {
+            --color-primary-text: #111111; 
+            --color-highlights-lines: #E81F3D; 
+            --color-accent-1: #FF4500; /* Name/Outer BG Color */
+            --color-pg-bg: #F0F0F0; 
+            --color-accent-2: #FF4500; 
+            
+            background-color: var(--color-accent-1) !important; /* Nike Orange */
+            color: white; 
+        }
+
+        /* --- 14. WINE & COFFEE --- */
+        .theme-wine-coffee {
+            --color-primary-text: #432818; 
+            --color-highlights-lines: #6F1D1B; 
+            --color-accent-1: #99582A; /* Name/Outer BG Color */
+            --color-pg-bg: #FFE6A7; 
+            --color-accent-2: #BB9457; 
+            
+            background-color: var(--color-accent-1) !important; /* Chocolate Brown */
+            color: white; 
+        }
+
+        /* --- 15. FOREST GREENS --- */
+        .theme-forest-greens {
+            --color-primary-text: #386641; 
+            --color-highlights-lines: #BC4749; 
+            --color-accent-1: #A7C957; /* Name/Outer BG Color */
+            --color-pg-bg: #F2E8CF; 
+            --color-accent-2: #6A994E; 
+            
+            background-color: var(--color-accent-1) !important; /* Yellow Green */
+            color: #386641; /* Dark text for contrast against light green */
+        }
+        
+        /* --- 16. DEEP FOREST --- */
+        .theme-deep-forest {
+            --color-primary-text: #344E41; 
+            --color-highlights-lines: #588157; 
+            --color-accent-1: #3A5A40; /* Name/Outer BG Color */
+            --color-pg-bg: #DAD7CD; 
+            --color-accent-2: #A3B18A; 
+            
+            background-color: var(--color-accent-1) !important; /* Hunter Green */
+            color: white; 
+        }
+
+        /* --- 17. SPACE INDIGO --- */
+        .theme-space-indigo {
+            --color-primary-text: #22223B; 
+            --color-highlights-lines: #4A4E69; 
+            --color-accent-1: #9A8C98; /* Name/Outer BG Color */
+            --color-pg-bg: #F2E9E4; 
+            --color-accent-2: #C9ADA7; 
+            
+            background-color: var(--color-accent-1) !important; /* Lilac Ash (Light) */
+            color: #22223B; /* Dark text for contrast against light color */
+        }
+        
+        /* --- 18. PASTEL DREAM --- */
+        .theme-pastel-dream {
+            --color-primary-text: #333333; 
+            --color-highlights-lines: #A2D2FF; 
+            --color-accent-1: #FFC8DD; /* Name/Outer BG Color */
+            --color-pg-bg: #FFFFFF; 
+            --color-accent-2: #BDE0FE; 
+            
+            background-color: var(--color-accent-1) !important; /* Pastel Petal (Light) */
+            color: #333333; /* Dark text for contrast against light color */
+        }
+
+        /* --- 19. OLIVE GROVE --- */
+        .theme-olive-grove {
+            --color-primary-text: #283618; 
+            --color-highlights-lines: #BC6C25; 
+            --color-accent-1: #606C38; /* Name/Outer BG Color */
+            --color-pg-bg: #FEFAE0; 
+            --color-accent-2: #DDA15E; 
+            
+            background-color: var(--color-accent-1) !important; /* Olive Leaf */
+            color: white; 
+        }
+
+
+        .main-text-color { color: var(--color-primary-text); }
+        .theme-jb-hifi .main-text-color { color: var(--color-primary-text); }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.5s ease-in-out; 
+            /* Global font size is now text-sm, applied via a class on body */
+            font-size: 0.875rem; /* text-sm equivalent */
+        }
+
+        /* Signature block positioning adjustment */
+        #signature-block {
+            margin-right: 1cm; /* Pushes the block 1cm from the right edge of its container */
+        }
+
+        /* *** AGGRESSIVE PDF PRINT FIXES *** */
+        @page { margin: 1cm; }
+        @media print {
+            /* CRITICAL FIX: Force ACCENT-1 for print background edge-to-edge */
+            /* This relies on browser/system settings to permit background graphics printing. */
+            html, body {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                background-color: var(--color-accent-1) !important; 
+            }
+            /* Ensures edge-to-edge fill and resolves the white strip issue */
+            html {
+                background-color: var(--color-accent-1) !important;
+            }
+            body {
+                overflow: hidden !important;
+            }
+            
+            /* THIS RULE HIDES THE THEME SELECTOR WHEN PRINTING */
+            #theme-selector-container { display: none !important; }
+            
+            /* Ensure the inner content card is white, as usual for print */
+            .main-content-card {
+                background-color: white !important; 
+                box-shadow: none !important; 
+                border-color: var(--color-accent-2) !important; 
+            }
+            
+            /* Print colors inside the card */
+            .main-text-color { color: var(--color-primary-text) !important; }
+            .highlights-lines-text { color: var(--color-highlights-lines) !important; }
+            .accent-1-text { color: var(--color-accent-1) !important; }
+            .highlights-lines-bg { background-color: var(--color-highlights-lines) !important; } 
+            .highlights-lines-border { border-color: var(--color-highlights-lines) !important; } 
+            .accent-2-border { border-color: var(--color-accent-2) !important; } 
+            
+            /* Ensure text is standard and colored correctly when printing */
+            .manifesto-quote, .rock-salt-name { 
+                text-shadow: none !important; /* CRITICAL: Remove shadows for print */
+            } 
+            .rock-salt-name { color: var(--color-accent-1) !important; } /* Name keeps its accent color */
+            .manifesto-quote { color: var(--color-highlights-lines) !important; } /* Quotes keep their highlight color */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 theme-kmart text-sm">
+
+    <!-- Theme Selector UI -->
+    <div class="max-w-3xl mx-auto mb-6 p-4 bg-white rounded-lg shadow-xl" id="theme-selector-container">
+        <h3 class="text-sm font-semibold text-gray-700 mb-2">Select Color Palette:</h3>
+        <div class="flex flex-wrap gap-4 text-xs font-medium">
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-red-50 hover:bg-red-100">
+                <input type="radio" name="theme" value="jb-hifi" class="text-red-600 focus:ring-red-500">
+                <span class="text-gray-800">JB Hi-Fi</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-red-100 hover:bg-red-200">
+                <input type="radio" name="theme" value="kmart" class="text-red-700 focus:ring-red-600" checked>
+                <span class="text-gray-800">Kmart</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-yellow-50 hover:bg-yellow-100">
+                <input type="radio" name="theme" value="adidas" class="text-blue-600 focus:ring-blue-500">
+                <span class="text-gray-800">Adidas</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-red-50 hover:bg-red-100 ring-1 ring-red-200">
+                <input type="radio" name="theme" value="coles" class="text-red-700 focus:ring-red-600">
+                <span class="text-gray-800">Coles Group</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-yellow-100 hover:bg-yellow-200 ring-1 ring-yellow-300">
+                <input type="radio" name="theme" value="bega" class="text-yellow-700 focus:ring-yellow-600">
+                <span class="text-gray-800">Bega Group</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-orange-100 hover:bg-orange-200 ring-1 ring-orange-300">
+                <input type="radio" name="theme" value="officeworks" class="text-orange-700 focus:ring-orange-600">
+                <span class="text-gray-800">Officeworks</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-white hover:bg-gray-50 ring-1 ring-gray-300">
+                <input type="radio" name="theme" value="reject-shop" class="text-yellow-700 focus:ring-yellow-600">
+                <span class="text-gray-800">The Reject Shop</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-red-100 hover:bg-red-200 ring-1 ring-red-300">
+                <input type="radio" name="theme" value="asahi" class="text-red-800 focus:ring-red-700">
+                <span class="text-gray-800">Asahi Beverages</span>
+            </label>
+             <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-green-100 hover:bg-green-200 ring-1 ring-green-300">
+                <input type="radio" name="theme" value="bunnings" class="text-green-700 focus:ring-green-600">
+                <span class="text-gray-800">Bunnings</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-orange-100 hover:bg-orange-200 ring-1 ring-orange-300">
+                <input type="radio" name="theme" value="nike" class="text-orange-600 focus:ring-orange-500">
+                <span class="text-gray-800">Nike</span>
+            </label>
+            <!-- NEW THEMES START HERE -->
+             <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-amber-100 hover:bg-amber-200 ring-1 ring-amber-300">
+                <input type="radio" name="theme" value="wine-coffee" class="text-amber-900 focus:ring-amber-800">
+                <span class="text-gray-800">Wine & Coffee</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-lime-100 hover:bg-lime-200 ring-1 ring-lime-300">
+                <input type="radio" name="theme" value="forest-greens" class="text-lime-700 focus:ring-lime-600">
+                <span class="text-gray-800">Forest Greens</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-green-200 hover:bg-green-300 ring-1 ring-green-400">
+                <input type="radio" name="theme" value="deep-forest" class="text-green-900 focus:ring-green-800">
+                <span class="text-gray-800">Deep Forest</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-stone-100 hover:bg-stone-200 ring-1 ring-stone-300">
+                <input type="radio" name="theme" value="space-indigo" class="text-stone-900 focus:ring-stone-800">
+                <span class="text-gray-800">Space Indigo</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-pink-100 hover:bg-pink-200 ring-1 ring-pink-300">
+                <input type="radio" name="theme" value="pastel-dream" class="text-pink-600 focus:ring-pink-500">
+                <span class="text-gray-800">Pastel Dream</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-lime-200 hover:bg-lime-300 ring-1 ring-lime-400">
+                <input type="radio" name="theme" value="olive-grove" class="text-lime-800 focus:ring-lime-700">
+                <span class="text-gray-800">Olive Grove</span>
+            </label>
+            <!-- END OF NEW THEMES -->
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-teal-50 hover:bg-teal-100">
+                <input type="radio" name="theme" value="professional" class="text-teal-600 focus:ring-teal-500">
+                <span class="text-gray-800">Professional</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-amber-50 hover:bg-amber-100">
+                <input type="radio" name="theme" value="earth-tones" class="text-amber-700 focus:ring-amber-600">
+                <span class="text-gray-800">Earth Tones</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded-lg bg-black/5 hover:bg-black/10">
+                <input type="radio" name="theme" value="monochrome" class="text-black focus:ring-gray-700">
+                <span class="text-gray-800">Monochrome</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- The main content container -->
+    <div class="max-w-3xl mx-auto rounded-xl p-6 sm:p-10 main-content-card">
+
+        <!-- 1. NAME BLOCK -->
+        <div class="text-right mb-2">
+            <!-- Increased text size to sm:text-2xl for better prominence -->
+            <h1 class="text-xl sm:text-2xl font-extrabold accent-1-text tracking-wider rock-salt-name">
+                ROHAN PRABHU
+            </h1>
+            <div class="w-full name-divider-2px highlights-lines-bg mt-1 rounded-full"></div>
+            <p class="text-sm mt-1 text-rightfont-normal main-text-color">
+                Melbourne, VIC &middot; rohan.prabhu24@gmail.com &middot; 0415 068 437 
+            </p>
+        </div>
+
+        <!-- 2. MAIN LETTER BODY CONTAINER -->
+        <!-- Content text size is already text-sm via the body tag -->
+        <div class="mt-2 text-justify main-text-color"> 
+            <p class="mb-3 text-right">
+                <span id="currentDate"></span>
+                <script>
+                    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+                        year: 'numeric', month: 'long', day: 'numeric'
+                    });
+                </script>
+            </p>
+
+            <p class="font-bold text-left">Hiring Manager</p>
+            <p class="text-left"><span id="company-name-block">Kmart Australia Limited</span>, Melbourne, AU</p>
+            <h2 class="text-base font-semibold mb-3 main-text-color tracking-tight border-b-2 pb-1 text-left highlights-lines-border">
+                Subject: Application for <span id="job-title">Forecast Analyst and Insights Data Analyst</span> Role
+            </h2>
+
+            <p class="mb-3 text-left">
+                Dear Hiring Manager,
+            </p>
+
+            <p class="mb-3">
+&nbsp;&nbsp;&nbsp; Throughout my career, I have operated on three core philosophies (❶ ❷ ❸) based on two philosophical cores: <b>kindness</b> & <b>common sense</b>.
+            </p>
+
+            <p class="mb-3">
+&nbsp;&nbsp;&nbsp; When a critical daily reporting process consumed hours time, the answer wasn't adding complexity, it was achieving <b>Simplicity</b>. I engineered a VBA automation suite that centralises insights generation, reducing process time from hours to minutes, and distributes <b>256 unique reports EVERY DAY</b> (x2 on Monday for additional Weekly Service Level Reports), <b>before 9am</b> with a single mouse-click. —❶ <span class="manifesto-quote">‘Often, the simplest answer is the right answer’</span>.
+            </p>
+
+            <p class="mb-3">
+&nbsp;&nbsp;&nbsp; When I was co-project-lead on a ‘Public Holiday Deliveries Scheduler’ project, I spotted major gaps and significant opportunities within Logistics and Operations. To understand <b>‘why’</b> and see <b>‘how’</b> I could use my skills to improve supply chain efficiency and challenge the omnipresent “it’s always been this way”sentiment, I liaised with the teams nationally (the real end-users). —❷ <span class="manifesto-quote">‘Listen first, act after; else you never truly learn’</span>.
+            </p>
+
+            <p class="mb-3">
+&nbsp;&nbsp;&nbsp; Having made my colleagues a part of the journey ensured <b>(i)</b> their endorsement & confidence in output quality—<i>which translated to swift acceptance</i> <b>(ii) </b> low resistance to change (merely 5% here). This is how I created the ‘Inventory Investigator Toolkit’ and ‘Logistics & Compliance Audit Toolkit’, both widely used in mitigating costly disputes & enforcing operational integrity. —❸ <span class="manifesto-quote">‘Fear not the unconventional, for therein lies growth’</span>. A more recent example of this philosophy is when I <b>self-taught</b> modern syntax & protocols in <b>just 3 days</b>, to solve an interoperability issue. <i>What was it? Did I solve it?</i> - details in my résumé, waiting for you to find out!
+		</p>
+
+Hoping I have demonstrated my enthusiasm to be considered for the <span id="job-title-body">Forecast Analyst and Insights Data Analyst</span> role & to discuss how my blend of philosophical drive, strategic thinking, & technical knowhow can directly contribute to 
+                <b><span id="company-name-bold">Kmart Australia Limited's</span></b> continuous excellence.
+            </p>
+            
+            <p class="mb-3">
+                Thank you for your time and consideration. I understand recruiting can be stressful and I hope it is going the way you wished.
+        </div>
+
+        <!-- 5. SIGNATURE BLOCK -->
+        <!-- Signature Block: Increased font size to text-sm and applied 1cm right margin via ID style -->
+        <div class="text-sm text-right main-text-color" id="signature-block" style="margin-right: 1cm;">
+            <p class="mb-2">
+                Sincerely,
+            </p>
+            <div class="h-14 w-28 border-b-2 mb-2 ml-auto highlights-lines-border"></div>
+            <p class="main-text-color">
+                Rohan Prabhu
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const themeRadios = document.querySelectorAll('input[name="theme"]');
+            
+            const themes = ['jb-hifi', 'professional', 'earth-tones', 'monochrome', 'kmart', 'adidas', 'coles', 'bega', 'officeworks', 'reject-shop', 'asahi', 'bunnings', 'nike', 'wine-coffee', 'forest-greens', 'deep-forest', 'space-indigo', 'pastel-dream', 'olive-grove'];
+
+            // Data for text replacement
+            const contentData = {
+                'jb-hifi': {
+                    job: "Insights Analyst",
+                    company: "JB Hi-Fi Limited",
+                    companyBold: "JB Hi-Fi's"
+                },
+                'kmart': {
+                    job: "Forecast Analyst and Insights Data Analyst",
+                    company: "Kmart Australia Limited",
+                    companyBold: "Kmart Australia Limited's"
+                },
+                'adidas': {
+                    job: "Senior Specialist, Inventory & Operations Analyst",
+                    company: "adidas",
+                    companyBold: "adidas's"
+                },
+                'coles': {
+                    job: "Trend Analyst",
+                    company: "Coles Group",
+                    companyBold: "Coles Group's"
+                },
+                'bega': {
+                    job: "Integrated Supply Planner",
+                    company: "Bega Group",
+                    companyBold: "Bega Group's"
+                },
+                'officeworks': {
+                    job: "Analytics Business Partner",
+                    company: "Officeworks",
+                    companyBold: "Officeworks's"
+                },
+                'reject-shop': {
+                    job: "Supply Chain Analyst - International",
+                    company: "The Reject Shop",
+                    companyBold: "The Reject Shop's"
+                },
+                'asahi': {
+                    job: "Supply Chain Analyst",
+                    company: "Asahi Beverages",
+                    companyBold: "Asahi Beverages's"
+                },
+                'bunnings': {
+                    job: "Business Analyst - 12 Month Contract Role",
+                    company: "Bunnings",
+                    companyBold: "Bunnings's"
+                },
+                'nike': {
+                    job: "Assortment Planning Analyst, Pacific",
+                    company: "Nike",
+                    companyBold: "Nike's"
+                },
+                'wine-coffee': {
+                    job: "Supply Chain and Logistics Analyst",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                },
+                'forest-greens': {
+                    job: "ESG & Sustainability Analyst",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                },
+                'deep-forest': {
+                    job: "Inventory Management Specialist",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                },
+                'space-indigo': {
+                    job: "Advanced Analytics Consultant",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                },
+                'pastel-dream': {
+                    job: "Creative Operations Coordinator",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                },
+                'olive-grove': {
+                    job: "Food & Beverage Sourcing Specialist",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                },
+                'professional': {
+                    job: "Insights Analyst",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                },
+                'earth-tones': {
+                    job: "Insights Analyst",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                },
+                'monochrome': {
+                    job: "Insights Analyst",
+                    company: "[Company Name]",
+                    companyBold: "[Company Name]'s"
+                }
+            };
+
+            function applyTheme(themeName) {
+                // 1. Theme Class
+                themes.forEach(theme => body.classList.remove(`theme-${theme}`));
+                body.classList.add(`theme-${themeName}`);
+
+                // 2. NEW FONT LOGIC: Set font based on theme
+                const nameFont = (themeName === 'jb-hifi') ? 'Rock Salt' : 'Montserrat';
+                document.body.style.setProperty('--name-font', nameFont);
+
+                // 3. Content Replacement
+                const data = contentData[themeName];
+                if (data) {
+                    document.getElementById('job-title').textContent = data.job;
+                    document.getElementById('job-title-body').textContent = data.job;
+                    document.getElementById('company-name-block').textContent = data.company;
+                    document.getElementById('company-name-address').textContent = data.company; 
+                    document.getElementById('company-name-bold').textContent = data.companyBold;
+                }
+
+                // 4. Handle text color for contact info outside the card
+                // This logic is for the LIVE view only, not print.
+                // We use getPropertyValue only after the class is set to get the currently applied variable value.
+                const accent1Color = getComputedStyle(body).getPropertyValue('--color-accent-1').trim();
+                
+                // Simple contrast check for white/dark text against the body background
+                // Check if the theme is one of the light backgrounds
+                if (themeName === 'bega' || themeName === 'officeworks' || themeName === 'reject-shop' || themeName === 'forest-greens' || themeName === 'space-indigo' || themeName === 'pastel-dream') {
+                    // If the accent is light, the text outside the card should be dark
+                    body.style.color = '#333333'; 
+                } else {
+                    // Otherwise, default to white for good contrast on dark backgrounds
+                    body.style.color = 'white'; 
+                }
+
+
+                // 5. Store selection
+                localStorage.setItem('coverLetterTheme', themeName);
+            }
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('coverLetterTheme');
+            if (savedTheme && themes.includes(savedTheme)) {
+                applyTheme(savedTheme);
+                const radio = document.querySelector(`input[value="${savedTheme}"]`);
+                if (radio) radio.checked = true;
+            } else {
+                applyTheme('kmart'); // Default to Kmart
+            }
+
+            // Event Listeners
+            themeRadios.forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    applyTheme(event.target.value);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
