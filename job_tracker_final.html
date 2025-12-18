@@ -1,0 +1,163 @@
+import React, { useState, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
+import { getFirestore, collection, addDoc, query, onSnapshot, limit, doc, setDoc } from 'firebase/firestore';
+import { Bell, ShieldCheck, Mail, Zap, ChevronRight, CheckCircle2 } from 'lucide-react';
+
+// Firebase configuration provided by the environment
+const firebaseConfig = JSON.parse(__firebase_config);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'job-tracker-pro';
+
+const App = () => {
+  const [user, setUser] = useState(null);
+  const [jobs, setJobs] = useState([]);
+  const [isIntercepting, setIsIntercepting] = useState(true);
+
+  // Your Top 5 Greens + Obsidian Neutrals
+  const colors = {
+    obsidian: '#161616',
+    midnite: '#0B1215',
+    pine: '#01796F',
+    emerald: '#50C878',
+    jade: '#00A86B',
+    neon: '#39FF14',
+    seafoam: '#9FE2BF',
+    blanc: '#EFEFEF'
+  };
+
+  // 1. Initial Auth (Rule 3)
+  useEffect(() => {
+    const initAuth = async () => {
+      await signInAnonymously(auth);
+    };
+    initAuth();
+    const unsubscribe = onAuthStateChanged(auth, setUser);
+    return () => unsubscribe();
+  }, []);
+
+  // 2. Data Listener (Rule 1 & 2)
+  useEffect(() => {
+    if (!user) return;
+    
+    const q = collection(db, 'artifacts', appId, 'public', 'data', 'applications');
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const docs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      // Sort in memory as per Rule 2
+      setJobs(docs.sort((a, b) => b.timestamp - a.timestamp));
+    }, (error) => console.error("Firestore Error:", error));
+
+    return () => unsubscribe();
+  }, [user]);
+
+  // Simulated Shortcut "Intercept" Function
+  const simulateShortcutIntercept = async () => {
+    if (!user) return;
+    
+    // This logic would be triggered by your iOS Shortcut
+    const newJob = {
+      company: "Innovation Lab",
+      role: "Lead Interface Designer",
+      status: "Offer",
+      timestamp: Date.now(),
+      jobId: `REQ-${Math.floor(Math.random() * 9000 + 1000)}`
+    };
+
+    try {
+      await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'applications'), newJob);
+    } catch (e) {
+      console.error("Save failed:", e);
+    }
+  };
+
+  return (
+    <div className="min-h-screen p-4 flex flex-col font-sans" style={{ backgroundColor: colors.obsidian, color: colors.blanc }}>
+      {/* Mobile Header */}
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h1 className="text-2xl font-black tracking-tighter italic" style={{ color: colors.seafoam }}>
+            GREEN HORIZON
+          </h1>
+          <div className="flex items-center gap-2">
+            <span className={`w-2 h-2 rounded-full ${isIntercepting ? 'animate-pulse' : ''}`} style={{ backgroundColor: colors.neon }}></span>
+            <span className="text-[10px] font-bold tracking-widest text-gray-500 uppercase">Shortcuts Link Active</span>
+          </div>
+        </div>
+        <div className="p-2 rounded-full" style={{ backgroundColor: colors.midnite, border: `1px solid ${colors.pine}` }}>
+          <ShieldCheck size={20} style={{ color: colors.emerald }} />
+        </div>
+      </div>
+
+      {/* Stats Quick View */}
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="p-4 rounded-xl flex flex-col items-center justify-center border-b-2" style={{ backgroundColor: colors.midnite, borderBottomColor: colors.emerald }}>
+          <span className="text-[9px] text-gray-500 uppercase font-black">Interviews</span>
+          <span className="text-xl font-bold" style={{ color: colors.emerald }}>{jobs.filter(j => j.status === 'Interview').length}</span>
+        </div>
+        <div className="p-4 rounded-xl flex flex-col items-center justify-center border-b-2" style={{ backgroundColor: colors.midnite, borderBottomColor: colors.neon }}>
+          <span className="text-[9px] text-gray-500 uppercase font-black">Offers</span>
+          <span className="text-xl font-bold" style={{ color: colors.neon }}>{jobs.filter(j => j.status === 'Offer').length}</span>
+        </div>
+      </div>
+
+      {/* Shortcuts Integration Mock */}
+      <div className="mb-6 p-4 rounded-xl space-y-3" style={{ backgroundColor: colors.midnite, border: `1px solid ${colors.pine}44` }}>
+        <div className="flex items-center gap-2 mb-2">
+          <Zap size={14} style={{ color: colors.neon }} />
+          <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400">Shortcut Interceptor</h2>
+        </div>
+        <p className="text-[11px] text-gray-500 leading-relaxed">
+          The iOS Shortcut sends a POST request here on every email notification. The system parses the subject, updates the ledger, and returns a confirmation to trigger your phone's chime.
+        </p>
+        <button 
+          onClick={simulateShortcutIntercept}
+          className="w-full py-2 rounded-lg text-xs font-bold transition-all active:scale-95"
+          style={{ backgroundColor: colors.jade, color: colors.midnite }}
+        >
+          Test Interception Pulse
+        </button>
+      </div>
+
+      {/* Recent Ledger */}
+      <div className="flex-grow flex flex-col">
+        <h2 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-3">Live Feed</h2>
+        <div className="space-y-3">
+          {jobs.map((job) => (
+            <div key={job.id} className="p-4 rounded-xl flex items-center justify-between border-l-4 transition-all" 
+                 style={{ backgroundColor: colors.midnite, borderLeftColor: job.status === 'Offer' ? colors.neon : colors.jade }}>
+              <div className="flex items-center gap-4">
+                <div className="p-2 rounded-lg" style={{ backgroundColor: colors.obsidian }}>
+                  <Mail size={16} style={{ color: colors.seafoam }} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold leading-none mb-1">{job.company}</h3>
+                  <p className="text-[10px] text-gray-500 font-mono">{job.role}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-[9px] font-black uppercase px-2 py-1 rounded" 
+                      style={{ 
+                        backgroundColor: job.status === 'Offer' ? `${colors.neon}22` : `${colors.emerald}22`,
+                        color: job.status === 'Offer' ? colors.neon : colors.emerald
+                      }}>
+                  {job.status}
+                </span>
+                <ChevronRight size={14} className="text-gray-700" />
+              </div>
+            </div>
+          ))}
+          {jobs.length === 0 && (
+            <div className="text-center py-10 opacity-30">
+              <p className="text-xs italic">Waiting for incoming signal...</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
